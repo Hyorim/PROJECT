@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int temp[5][5]={{-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1}};
+int user_temp[5][5]={{-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1}};
 
 
 int overlap(int num)
@@ -10,7 +10,7 @@ int overlap(int num)
 	{
 		for(j=0;j<5;j++)
 		{
-			if(temp[i][j]==num)
+			if(user_temp[i][j]==num)
 			{
 				return 0;
 			}
@@ -20,10 +20,9 @@ int overlap(int num)
 }
 
 
-void user_make(int(*arr)[5])
+void user_make(int(*user_arr)[5])
 {
-	int i;
-	int j;
+	int i,j;
 	int num=0;
 
 	for (i=0;i<5;i++)
@@ -37,8 +36,8 @@ void user_make(int(*arr)[5])
 				printf("Please enter another number.");
 				scanf("%d",&num);
 			}
-			arr[i][j]=num;
-			temp[i][j]=num;
+			user_arr[i][j]=num;
+			user_temp[i][j]=num;
 		}
 	}
 }
