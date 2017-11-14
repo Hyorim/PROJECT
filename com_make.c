@@ -20,24 +20,15 @@ void com_make(int(*array)[5])
 {
 
 	int i=0;
-	int j=0;
 	srand((int)time(NULL));
 	while(!check())
 	{
 		int num=(rand()%25)+1;
 		if(temp[num-1]==-1)
 		{
-			array[i][j]=num;
+			array[i/5][i%5]=num;
 			temp[num-1]=0;
-			if(j==4)
-			{
-				j=0;
-				i++;
-			}
-			else
-			{
-				j++;
-			}
+			i++;
 		}
 	}
 }
