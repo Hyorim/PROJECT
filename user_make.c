@@ -2,7 +2,6 @@
 
 int user_temp[5][5]={{-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1},{-1,-1,-1,-1,-1}};
 
-
 int overlap(int num)
 {
 	int i,j;
@@ -19,12 +18,10 @@ int overlap(int num)
 	return 1;
 }
 
-
 void user_make(int(*user_arr)[5])
 {
 	int i,j;
 	int num=0;
-
 	for (i=0;i<5;i++)
 	{
 		for (j=0;j<5;j++)
