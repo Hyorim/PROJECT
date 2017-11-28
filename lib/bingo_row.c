@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-#include <stdio.h>
-
 int bingo_row(int (*arr)[5],int num)
 {
         int i=0;
