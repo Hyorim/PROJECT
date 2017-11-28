@@ -26,45 +26,85 @@ int main (void)
 	int com_bingo = 0;
 	int turn = 0;
 
-	//while((user_bingo != 5)&&(com_bingo != 5))
-	//{
+	int dup[50]={-1,};
+	int diag[10]={1,7,13,19,25,5,9,13,17,21};
 
-	switch(turn%2){
-	case 0: scanf("%d",&pick_num);
-		printf("Number is %d\n",pick_num);
-	case 1: pick_num=(rand()%25)+1;
-		printf("Number is %d\n",pick_num);
-	//function=not duplication(user_num!=com_num);
-	}
-	turn++;
-
-	user_loc = user_delete(user_arr,pick_num);
-	com_loc = com_delete(com_arr,pick_num);
-
-	if(user_loc != 0)
+	while((user_bingo != 5)&&(com_bingo != 5))
 	{
-		user_bingo = user_bingo+bingo_test(user_arr,user_loc);
-		//if(user_loc == )
+
+		switch(turn%2){
+		case 0: scanf("%d",&pick_num);
+			printf("Number is %d\n",pick_num);
+		case 1: pick_num=(rand()%50)+1;
+			printf("Number is %d\n",pick_num);
+		}
+		if (dup[pick_num-1]==-1)
+		{
+			dup[pick_num-1]=1;
+		}
+		else
+		{
+			while( dup[pick_num-1] != -1 )
+			{	switch(turn%2){
+				case 0: scanf("%d",&pick_num);
+				printf("Number is %d\n",pick_num);
+				case 1: pick_num=(rand()%50)+1;
+				printf("Number is %d\n",pick_num);
+			}
+                }
+
+		}
+		turn++;
+
+		user_loc = user_delete(user_arr,pick_num);
+		com_loc = com_delete(com_arr,pick_num);
+
+		if(user_loc != 0)
+		{
+			user_bingo = user_bingo+bingo_test(user_arr,user_loc);
+			int i;
+			for(i=0;i<10;i++)
+			{
+				if((user_loc==diag[i])&&(i<5))
+				{
+					bingo_diag_left(user_arr);
+				}
+				else if((user_loc==diag[i])&&(i>4))
+				{
+					bingo_diag_right(user_arr);
+				}
+			}
+		}
+		if(com_loc != 0)
+		{
+			com_bingo = com_bingo+bingo_test(com_arr,com_loc);
+			int i;
+			for(i=0;i<10;i++)
+			{
+				if((com_loc==diag[i])&&(i<5))
+				{
+					bingo_diag_left(com_arr);
+				}
+				else if((com_loc==diag[i])&&(i>4))
+				{
+					bingo_diag_right(com_arr);
+				}
+			}
+		}
+		printf("\n");
+		bingo_print(user_arr);
 	}
-	if(com_loc != 0)
-	{
-		com_bingo = com_bingo+bingo_test(com_arr,com_loc);
-		//if(com_loc == )
-	}
 
-
-	//function print bingoboard
-
-
-	//}
-	//
 
 	if (user_bingo == 5)
 	{
-		printf("You win. Congratulation!\n");
+		bingo_print(user_arr);
+		printf("\nYou win. Congratulation!\n");
 	}
 	else if (com_bingo == 5)
 	{
-		printf("You lost. Try again later!\n")
+		printf("\nCOM's bingo_board\n");
+		bingo_print(com_arr);
+		printf("\nYou lost. Try again later!\n");
 	}
 }
