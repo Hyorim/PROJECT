@@ -12,7 +12,6 @@ int bingo_column(int(*user_arr)[5],int user_cur)
 			bingo_col++;
 		}
 	}
-	printf("%d\n",bingo_col);
 	if(bingo_col==5)
 	{
 		return 1;
