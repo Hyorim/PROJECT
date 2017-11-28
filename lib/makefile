@@ -16,6 +16,9 @@ bingo_row.o: bingo_row.c bingo_row.h
 bingo_column.o: bingo_column.c bingo_column.h
 	gcc -c bingo_column.c -I../include
 
+bingo_print.o: bingo_print.c bingo_print.h
+	gcc -c bingo_print.c -I../include
+
 com_delete.o: com_delete.c com_delete.h
 	gcc -c com_delete.c -I../include
 

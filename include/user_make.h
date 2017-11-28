@@ -1,6 +1,6 @@
 #ifndef USER_MAKE_H
 #define USER_MAKE_H
 
-void com_make(int(*array)[5]);
+void user_make(int(*user_arr)[5]);
 
 #endif
