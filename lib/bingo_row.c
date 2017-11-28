@@ -1,24 +1,19 @@
 #include <stdio.h>
 
-int bingo_column(int(*user_arr)[5],int user_cur)
+#include <stdio.h>
+
+int bingo_row(int (*arr)[5],int num)
 {
-	int x,j;
-	int bingo_col=0;
-	j=user_cur%5;
-	for(x=0;x<5;x++)
-	{
-		if(user_arr[x][j]==-1)
-		{
-			bingo_col++;
-		}
-	}
-	printf("%d\n",bingo_col);
-	if(bingo_col==5)
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
-	}
+        int i=0;
+        while(i!=5)
+        {
+                if(arr[num/5][i]!=-1)
+                {
+                        return 0;
+                }
+                i++;
+        }
+        return 1;
 }
+
+
