@@ -1,6 +1,7 @@
 .PHONY: clean
 FUNCTION = bingo_diag_right.o bingo_diag_left.o bingo_row.o bingo_column.o bingo_print.o com_delete.o com_make.o user_delete.o user_make.o
 
+
 libfuncs.a: $(FUNCTION)
 	ar rv libfuncs.a $(FUNCTION)
 
