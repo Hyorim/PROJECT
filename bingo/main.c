@@ -16,25 +16,42 @@ int main (void)
 
 	printf("Make Bingoboard\n");
 
-	user_make(user_arr);
+	//user_make(user_arr);
+	int a,b;
+	int c=1;
+	for(a=1;a<6;a++)
+	{
+		for(b=1;b<6;b++)
+		{
+			user_arr[a-1][b-1]=c;
+			c++;
+		}
+	}
 	com_make(com_arr);
 
-	printf("Start Bingo\n Pick a number\n");
+	//printf("Start Bingo\n Pick a number\n");
 	int pick_num;
 	int user_loc,com_loc;
 	int user_bingo = 0;
 	int com_bingo = 0;
 	int turn = 0;
 
-	int dup[50]={-1,};
+	int dup[50];
+	int i;
+	for(i=0;i<50;i++)
+	{
+		dup[i]=-1;
+	}
 	int diag[10]={1,7,13,19,25,5,9,13,17,21};
+
+	printf("Game Start\n");
 
 	while((user_bingo != 5)&&(com_bingo != 5))
 	{
 
 		switch(turn%2){
 		case 0: scanf("%d",&pick_num);
-			printf("Number is %d\n",pick_num);
+			printf("111Number is %d\n",pick_num);
 		case 1: pick_num=(rand()%50)+1;
 			printf("Number is %d\n",pick_num);
 		}
@@ -45,15 +62,18 @@ int main (void)
 		else
 		{
 			while( dup[pick_num-1] != -1 )
-			{	switch(turn%2){
+			{
+				switch(turn%2){
 				case 0: scanf("%d",&pick_num);
-				printf("Number is %d\n",pick_num);
+				printf("---Number is %d\n",pick_num);
 				case 1: pick_num=(rand()%50)+1;
-				printf("Number is %d\n",pick_num);
+				printf("---Number is %d\n",pick_num);
+
+				}
 			}
                 }
 
-		}
+
 		turn++;
 
 		user_loc = user_delete(user_arr,pick_num);
@@ -61,7 +81,7 @@ int main (void)
 
 		if(user_loc != 0)
 		{
-			user_bingo = user_bingo+bingo_test(user_arr,user_loc);
+			user_bingo = user_bingo+bingo_test(user_arr);
 			int i;
 			for(i=0;i<10;i++)
 			{
@@ -77,7 +97,7 @@ int main (void)
 		}
 		if(com_loc != 0)
 		{
-			com_bingo = com_bingo+bingo_test(com_arr,com_loc);
+			com_bingo = com_bingo+bingo_test(com_arr);
 			int i;
 			for(i=0;i<10;i++)
 			{
