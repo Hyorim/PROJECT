@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <signal.h>
+#include <unistd.h>
 #include <time.h>
 #include "bingo_column.h"
 #include "bingo_row.h"
@@ -18,13 +20,29 @@ int bingo_test(int(*arr)[5],int loc)
 	return (row+col);
 }
 
+void term(int sig)
+{
+	printf("Give up game.\n");
+	exit(0);
+}
 
 int main (void)
 {
 	int user_arr[5][5],com_arr[5][5];
 	srand((int)time(NULL));
 
-	printf("Make Bingoboard\n");
+	struct sigaction sa;
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags=0;
+	sa.sa_handler=term;
+	if(sigaction(SIGINT,&sa,NULL)==-1)
+	{
+		perror("sigaction");
+		exit(0);
+	}
+
+
+	printf("Game start.(ctrl+c = Give up)\nMake Bingoboard\n");
 
 	//user_make(user_arr);
 	int a,b;
@@ -68,7 +86,7 @@ int main (void)
 	}
 	int diag[10]={1,7,13,19,25,5,9,13,17,21};
 	int try_num=0;
-	printf("Game Start\n");
+
 
 	while((user_bingo < 5)&&(com_bingo < 5))
 	{
@@ -118,7 +136,7 @@ int main (void)
 		{
 			while(( dup[pick_num-1] == 1 )||(try_num == 1))
 			{
-				if((try_num == 1)&&(dup[pick_num-1]!=1))
+				if(try_num == 1)
 				{
 					printf("Not exist. Try again\n");
 				}
