@@ -110,7 +110,14 @@ int main (void)
 		{
 			while(( dup[pick_num-1] == 1 )||(try_num == 1))
 			{
-				printf("Duplication! Try again\n");
+				if(dup[pick_num-1] == 1)
+				{
+					printf("Duplication! Try again\n");
+				}
+				if(try_num == 1)
+				{
+					printf("Not exist. Try again\n");
+				}
 				printf("%d\n",try_num);
 				if((turn%2)==0)
 				{
