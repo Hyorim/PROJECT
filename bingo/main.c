@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <time.h>
 
-int bingo_test(int(*arr)[5])
+int bingo_test(int(*arr)[5],int loc)
 {
-	int row = bingo_row(arr);
-	int col = bingo_column(arr);
+	int row = bingo_row(arr,loc);
+	int col = bingo_column(arr,loc);
+
 	return (row+col);
 }
 
@@ -51,7 +52,7 @@ int main (void)
 /*
 		switch(turn%2){
 		case 0: scanf("%d",&pick_num);
-			printf("111Number is %d\n",pick_num);
+			printf("Number is %d\n",pick_num);
 		case 1: pick_num=(rand()%50)+1;
 			printf("Number is %d\n",pick_num);
 		}
@@ -59,13 +60,14 @@ int main (void)
 		if((turn%2)==0)
 		{
 			scanf("%d",&pick_num);
-                        printf("111Number is %d\n",pick_num);
+                        printf("[USER]Number is %d\n",pick_num);
 		}
 		else if((turn%2)==1)
 		{
                 	pick_num=(rand()%50)+1;
-                        printf("222Number is %d\n",pick_num);
+                        printf("[COM]Number is %d\n",pick_num);
 		}
+
 		if (dup[pick_num-1]==-1)
 		{
 			dup[pick_num-1]=1;
@@ -84,7 +86,6 @@ int main (void)
 			}
                 }
 
-
 		turn++;
 
 		user_loc = user_delete(user_arr,pick_num);
@@ -92,7 +93,7 @@ int main (void)
 
 		if(user_loc != 0)
 		{
-			user_bingo = user_bingo+bingo_test(user_arr);
+			user_bingo = user_bingo+bingo_test(user_arr,user_loc);
 			int i;
 			for(i=0;i<10;i++)
 			{
@@ -108,7 +109,7 @@ int main (void)
 		}
 		if(com_loc != 0)
 		{
-			com_bingo = com_bingo+bingo_test(com_arr);
+			com_bingo = com_bingo+bingo_test(com_arr,com_loc);
 			int i;
 			for(i=0;i<10;i++)
 			{
