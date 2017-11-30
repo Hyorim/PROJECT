@@ -48,12 +48,23 @@ int main (void)
 
 	while((user_bingo != 5)&&(com_bingo != 5))
 	{
-
+/*
 		switch(turn%2){
 		case 0: scanf("%d",&pick_num);
 			printf("111Number is %d\n",pick_num);
 		case 1: pick_num=(rand()%50)+1;
 			printf("Number is %d\n",pick_num);
+		}
+*/
+		if((turn%2)==0)
+		{
+			scanf("%d",&pick_num);
+                        printf("111Number is %d\n",pick_num);
+		}
+		else if((turn%2)==1)
+		{
+                	pick_num=(rand()%50)+1;
+                        printf("222Number is %d\n",pick_num);
 		}
 		if (dup[pick_num-1]==-1)
 		{
