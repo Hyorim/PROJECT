@@ -107,7 +107,7 @@ int main (void)
 		}
 		if((dup[pick_num-1]== 1)||(try_num==1))
 		{
-			while(( dup[pick_num-1] == 1 )&&(try_num == 1))
+			while(( dup[pick_num-1] == 1 )||(try_num == 1))
 			{
 				printf("Duplication! Try again\n");
 
