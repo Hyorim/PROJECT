@@ -3,9 +3,8 @@
 
 int bingo_test(int(*arr)[5],int loc)
 {
-	int row = bingo_row(arr,loc);
-	int col = bingo_column(arr,loc);
-
+	int row = bingo_row(arr,loc-1);
+	int col = bingo_column(arr,loc-1);
 	return (row+col);
 }
 
@@ -99,11 +98,11 @@ int main (void)
 			{
 				if((user_loc==diag[i])&&(i<5))
 				{
-					bingo_diag_left(user_arr);
+					user_bingo=user_bingo+bingo_diag_left(user_arr);
 				}
 				else if((user_loc==diag[i])&&(i>4))
 				{
-					bingo_diag_right(user_arr);
+					user_bingo=user_bingo+bingo_diag_right(user_arr);
 				}
 			}
 		}
@@ -115,16 +114,18 @@ int main (void)
 			{
 				if((com_loc==diag[i])&&(i<5))
 				{
-					bingo_diag_left(com_arr);
+					com_bingo=com_bingo+bingo_diag_left(com_arr);
 				}
 				else if((com_loc==diag[i])&&(i>4))
 				{
-					bingo_diag_right(com_arr);
+					com_bingo=com_bingo+bingo_diag_right(com_arr);
 				}
 			}
 		}
 		printf("\n");
 		bingo_print(user_arr);
+
+		printf("user bingo is %d\n",user_bingo);
 	}
 
 
