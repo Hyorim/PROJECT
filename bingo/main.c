@@ -100,17 +100,18 @@ int main (void)
 			}
 		}
 
-
+		int temp=0;
 		if (dup[pick_num-1]==-1)
 		{
 			dup[pick_num-1]=1;
+			temp=1;
 		}
-		if((dup[pick_num-1]== 1)||(try_num==1))
+		if(((dup[pick_num-1]== 1)&&(temp != 1))||(try_num==1))
 		{
 			while(( dup[pick_num-1] == 1 )||(try_num == 1))
 			{
 				printf("Duplication! Try again\n");
-
+				printf("%d\n",try_num);
 				if((turn%2)==0)
 				{
 					scanf("%d",&pick_num);
