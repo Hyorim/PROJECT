@@ -1,5 +1,14 @@
 #include <stdio.h>
 #include <time.h>
+#include "bingo_column.h"
+#include "bingo_row.h"
+#include "bingo_diag_right.h"
+#include "bingo_diag_left.h"
+#include "bingo_print.h"
+#include "com_make.h"
+#include "com_delete.h"
+#include "user_delete.h"
+#include "user_make.h"
 
 int bingo_test(int(*arr)[5],int loc)
 {
