@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #include "bingo_column.h"
 #include "bingo_row.h"
@@ -83,6 +84,12 @@ int main (void)
 		{
 			printf("Pick a number\n");
 			scanf("%d",&pick_num);
+			while((pick_num < 1)||(pick_num > 50))
+			{
+				printf("Please 0<number<51\n");
+				scanf("%d",&pick_num);
+			}
+
                         printf("[USER]Number is %d\n",pick_num);
 			if(user_num[pick_num-1]==-1)
 			{
@@ -119,18 +126,25 @@ int main (void)
 		{
 			while(( dup[pick_num-1] == 1 )||(try_num == 1))
 			{
-				if(dup[pick_num-1] == 1)
-				{
-					printf("Duplication! Try again\n");
-				}
 				if(try_num == 1)
 				{
 					printf("Not exist. Try again\n");
 				}
-				printf("%d\n",try_num);
+				else
+				{
+					printf("Duplication! Try again\n");
+				}
+
+				printf("try_num is %d\n",try_num);
+
 				if((turn%2)==0)
 				{
 					scanf("%d",&pick_num);
+					while((pick_num < 1)||(pick_num > 50))
+					{
+						printf("Please 0<number<51\n");
+						scanf("%d",&pick_num);
+					}
 					printf("[USER]Number is %d\n",pick_num);
 					if(user_num[pick_num-1]==-1)
 					{
