@@ -58,6 +58,7 @@ int main (void)
 */
 		if((turn%2)==0)
 		{
+			printf("Pick a number\n");
 			scanf("%d",&pick_num);
                         printf("[USER]Number is %d\n",pick_num);
 		}
@@ -76,13 +77,19 @@ int main (void)
 			while( dup[pick_num-1] != -1 )
 			{
 				printf("Duplication! Try again\n");
-				switch(turn%2){
-				case 0: scanf("%d",&pick_num);
-				printf("[USER]Number is %d\n",pick_num);
-				case 1: pick_num=(rand()%50)+1;
-				printf("[COM]Number is %d\n",pick_num);
 
+				if((turn%2)==0)
+				{
+					scanf("%d",&pick_num);
+					printf("[USER]Number is %d\n",pick_num);
 				}
+				else if((turn%2)==1)
+				{
+					pick_num=(rand()%50)+1;
+					printf("[COM]Number is %d\n",pick_num);
+				}
+
+				
 			}
                 }
 
