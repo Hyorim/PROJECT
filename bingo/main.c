@@ -46,7 +46,7 @@ int main (void)
 
 	printf("Game Start\n");
 
-	while((user_bingo != 5)&&(com_bingo != 5))
+	while((user_bingo < 5)&&(com_bingo < 5))
 	{
 /*
 		switch(turn%2){
@@ -75,11 +75,12 @@ int main (void)
 		{
 			while( dup[pick_num-1] != -1 )
 			{
+				printf("Duplication! Try again\n");
 				switch(turn%2){
 				case 0: scanf("%d",&pick_num);
-				printf("---Number is %d\n",pick_num);
+				printf("[USER]Number is %d\n",pick_num);
 				case 1: pick_num=(rand()%50)+1;
-				printf("---Number is %d\n",pick_num);
+				printf("[COM]Number is %d\n",pick_num);
 
 				}
 			}
@@ -129,12 +130,12 @@ int main (void)
 	}
 
 
-	if (user_bingo == 5)
+	if (user_bingo > 4)
 	{
 		bingo_print(user_arr);
 		printf("\nYou win. Congratulation!\n");
 	}
-	else if (com_bingo == 5)
+	else if (com_bingo > 4)
 	{
 		printf("\nCOM's bingo_board\n");
 		bingo_print(com_arr);
