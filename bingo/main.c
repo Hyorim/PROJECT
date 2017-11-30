@@ -36,14 +36,28 @@ int main (void)
 	int com_bingo = 0;
 	int turn = 0;
 
+	int user_num[50];
+	int com_num[50];
+	int i,j;
+
 	int dup[50];
-	int i;
 	for(i=0;i<50;i++)
 	{
 		dup[i]=-1;
+		user_num[i]=-1;
+		com_num[i]=-1;
+	}
+
+	for(i=0;i<5;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+			user_num[user_arr[i][j]-1]=1;
+			com_num[com_arr[i][j]-1]=1;
+		}
 	}
 	int diag[10]={1,7,13,19,25,5,9,13,17,21};
-
+	int try_num=0;
 	printf("Game Start\n");
 
 	while((user_bingo < 5)&&(com_bingo < 5))
@@ -61,20 +75,39 @@ int main (void)
 			printf("Pick a number\n");
 			scanf("%d",&pick_num);
                         printf("[USER]Number is %d\n",pick_num);
+			if(user_num[pick_num-1]==-1)
+			{
+				try_num=1;
+			}
+			else
+			{
+				user_num[pick_num-1]=-1;
+				try_num=0;
+			}
 		}
 		else if((turn%2)==1)
 		{
                 	pick_num=(rand()%50)+1;
                         printf("[COM]Number is %d\n",pick_num);
+			if(com_num[pick_num-1]==-1)
+			{
+				try_num=1;
+			}
+			else
+			{
+				com_num[pick_num-1]=-1;
+				try_num=0;
+			}
 		}
+
 
 		if (dup[pick_num-1]==-1)
 		{
 			dup[pick_num-1]=1;
 		}
-		else
+		if((dup[pick_num-1]== 1)||(try_num==1))
 		{
-			while( dup[pick_num-1] != -1 )
+			while(( dup[pick_num-1] == 1 )&&(try_num == 1))
 			{
 				printf("Duplication! Try again\n");
 
@@ -82,14 +115,32 @@ int main (void)
 				{
 					scanf("%d",&pick_num);
 					printf("[USER]Number is %d\n",pick_num);
+					if(user_num[pick_num-1]==-1)
+					{
+						try_num=1;
+					}
+					else
+					{
+						user_num[pick_num-1]=-1;
+						try_num=0;
+					}
+
+
 				}
 				else if((turn%2)==1)
 				{
 					pick_num=(rand()%50)+1;
 					printf("[COM]Number is %d\n",pick_num);
+					if(com_num[pick_num-1]==-1)
+					{
+						try_num=1;
+					}
+					else
+					{
+						com_num[pick_num-1]=-1;
+						try_num=0;
+					}
 				}
-
-				
 			}
                 }
 
