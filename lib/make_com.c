@@ -1,12 +1,17 @@
 #include <stdio.h>
 #include <time.h>
 
-int temp[25]={-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+int k;
+int temp[50];
+for(k=0;k<50;k++)
+{
+	temp[k]=-1;
+}
 
 int check()
 {
 	int i;
-	for(i=0;i<25;i++)
+	for(i=0;i<50;i++)
 	{
 		if(temp[i]==-1)
 		{
@@ -24,7 +29,7 @@ void com_make(int(*array)[5])
 	srand((int)time(NULL));
 	while(!check())
 	{
-		int num=(rand()%25)+1;
+		int num=(rand()%50)+1;
 		if(temp[num-1]==-1)
 		{
 			array[i][j]=num;
