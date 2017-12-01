@@ -1,12 +1,9 @@
 #include <stdio.h>
 #include <time.h>
+#include <stdlib.h>
 
-int k;
-int temp[50];
-for(k=0;k<50;k++)
-{
-	temp[k]=-1;
-}
+
+int temp[50]={-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
 
 int check()
 {
@@ -26,14 +23,16 @@ void com_make(int(*array)[5])
 
 	int i=0;
 	int j=0;
+	int k=0;
 	srand((int)time(NULL));
-	while(!check())
+	while(k<25)
 	{
 		int num=(rand()%50)+1;
 		if(temp[num-1]==-1)
 		{
 			array[i][j]=num;
 			temp[num-1]=0;
+			k++;
 			if(j==4)
 			{
 				j=0;
