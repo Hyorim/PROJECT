@@ -30,7 +30,7 @@ void user_make(int(*user_arr)[5])
                 {
                         printf("Please enter numbers.");
                         scanf("%d",&num);
-                        while(overlap(num)==0)
+                        while(overlap(num)==0||num>50||num<1)
                         {
                                 printf("Other number : ");
                                 scanf("%d",&num);
@@ -40,4 +40,3 @@ void user_make(int(*user_arr)[5])
                 }
         }
 }
-
