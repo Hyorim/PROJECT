@@ -12,7 +12,7 @@ void com_make(int(*array)[5])
 	srand((int)time(NULL));
 	while(k<25)
 	{
-		int num=(rand()%25)+1;
+		int num=(rand()%50)+1;
 		if(temp[num-1]==-1)
 		{
 			array[i/5][i%5]=num;
