@@ -12,7 +12,8 @@
 #include "com_delete.h"
 #include "user_delete.h"
 #include "user_make.h"
-
+int turn=0;
+int time_over=0;
 int bingo_test(int(*arr)[5],int loc)
 {
 	int row = bingo_row(arr,loc-1);
@@ -24,6 +25,13 @@ void term(int sig)
 {
 	printf("Give up game.\n");
 	exit(0);
+}
+
+void turn_change(int sig)
+{
+	printf("\nTime over!\n Turn change!\n");
+	turn++;
+	time_over=1;
 }
 
 int main (void)
@@ -41,6 +49,21 @@ int main (void)
 		exit(0);
 	}
 
+        struct sigaction sb;
+        sigemptyset(&sb.sa_mask);
+        sb.sa_flags=0;
+        sb.sa_handler=turn_change;
+        if(sigaction(SIGALRM,&sb,NULL)==-1)
+        {
+                perror("sigaction");
+                exit(0);
+        }
+
+	sigset_t block_set,prev_set;
+	sigemptyset(&block_set);
+	sigaddset(&block_set,SIGALRM);
+	sigprocmask(SIG_BLOCK,&block_set,&prev_set);
+
 
 	printf("Game start.(ctrl+c = Give up)\nMake Bingoboard\n");
 
@@ -51,7 +74,6 @@ int main (void)
 	int user_loc,com_loc;
 	int user_bingo = 0;
 	int com_bingo = 0;
-	int turn = 0;
 
 	int user_num[50];
 	int com_num[50];
@@ -81,8 +103,20 @@ int main (void)
 	{
 		if((turn%2)==0)
 		{
+			pick_num=0;
 			printf("Pick a number\n");
-			scanf("%d",&pick_num);
+			sigprocmask(SIG_SETMASK,&prev_set,NULL);
+			alarm(10);
+			if(time_over != 1)
+			{
+				scanf("%d",&pick_num);
+			}
+			sigprocmask(SIG_BLOCK,&block_set,&prev_set);
+			time_over=0;
+
+		}
+		if((turn%2)==0)
+		{
 			while((pick_num < 1)||(pick_num > 50))
 			{
 				printf("Please 0<number<51\n");
@@ -102,6 +136,7 @@ int main (void)
 		}
 		else if((turn%2)==1)
 		{
+			sleep(3);
                 	pick_num=(rand()%50)+1;
 
 			if(com_num[pick_num-1]==-1)
@@ -138,8 +173,17 @@ int main (void)
 						printf("Duplication! Try again\n");
 					}
 
+					pick_num=0;
+					sigprocmask(SIG_SETMASK,&prev_set,NULL);
+					alarm(10);
+					if(time_over != 1)
+					{
+						scanf("%d",&pick_num);
+					}
 
-					scanf("%d",&pick_num);
+					sigprocmask(SIG_BLOCK,&block_set,&prev_set);
+					time_over=0;
+
 					while((pick_num < 1)||(pick_num > 50))
 					{
 						printf("Please 0<number<51\n");
