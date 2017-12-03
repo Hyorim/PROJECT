@@ -12,6 +12,8 @@
 #include "com_delete.h"
 #include "user_delete.h"
 #include "user_make.h"
+#include "bingo_turn.h"
+
 int turn=0;
 int time_over=0;
 int bingo_test(int(*arr)[5],int loc)
@@ -36,6 +38,7 @@ void turn_change(int sig)
 
 int main (void)
 {
+
 	int user_arr[5][5],com_arr[5][5];
 	srand((int)time(NULL));
 
@@ -97,6 +100,18 @@ int main (void)
 	}
 	int diag[10]={1,7,13,19,25,5,9,13,17,21};
 	int try_num=0;
+
+
+	turn=bingo_turn();
+	if(turn==0)
+	{
+	printf("User first\n");
+	}
+	else
+	{
+	printf("Com first\n");
+	}
+
 
 
 	while((user_bingo < 5)&&(com_bingo < 5))
