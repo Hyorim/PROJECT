@@ -175,7 +175,6 @@ int main (void)
 			}
                 }
 
-		turn++;
 
 		user_loc = user_delete(user_arr,pick_num);
 		com_loc = com_delete(com_arr,pick_num);
@@ -216,6 +215,8 @@ int main (void)
 		bingo_print(user_arr);
 
 		printf("user bingo is %d\n",user_bingo);
+
+		turn++;
 	}
 
 	if (user_bingo > 4)
