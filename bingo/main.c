@@ -31,7 +31,7 @@ void term(int sig)
 
 void turn_change(int sig)
 {
-	printf("\nTime over!\n Turn change!\n");
+	printf("\nTime over! Turn change!\n");
 	turn++;
 	time_over=1;
 }
@@ -112,8 +112,6 @@ int main (void)
 	printf("Com first\n");
 	}
 
-
-
 	while((user_bingo < 5)&&(com_bingo < 5))
 	{
 		if((turn%2)==0)
@@ -121,7 +119,7 @@ int main (void)
 			pick_num=0;
 			printf("Pick a number\n");
 			sigprocmask(SIG_SETMASK,&prev_set,NULL);
-			alarm(10);
+			alarm(15);
 			if(time_over != 1)
 			{
 				scanf("%d",&pick_num);
@@ -190,7 +188,7 @@ int main (void)
 
 					pick_num=0;
 					sigprocmask(SIG_SETMASK,&prev_set,NULL);
-					alarm(10);
+					alarm(15);
 					if(time_over != 1)
 					{
 						scanf("%d",&pick_num);
