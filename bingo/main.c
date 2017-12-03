@@ -114,7 +114,7 @@ int main (void)
 		else if((turn%2)==1)
 		{
                 	pick_num=(rand()%50)+1;
-                        printf("[COM]Number is %d\n",pick_num);
+
 			if(com_num[pick_num-1]==-1)
 			{
 				try_num=1;
@@ -123,6 +123,7 @@ int main (void)
 			{
 				com_num[pick_num-1]=-1;
 				try_num=0;
+				printf("[COM]Number is %d\n",pick_num);
 			}
 		}
 
@@ -136,18 +137,19 @@ int main (void)
 		{
 			while(( dup[pick_num-1] == 1 )||(try_num == 1))
 			{
-				if(try_num == 1)
-				{
-					printf("Not exist. Try again\n");
-				}
-				else if(dup[pick_num-1]==1)
-				{
-					printf("Duplication! Try again\n");
-				}
-
 
 				if((turn%2)==0)
 				{
+					if(try_num == 1)
+					{
+						printf("Not exist. Try again\n");
+					}
+					else if(dup[pick_num-1]==1)
+					{
+						printf("Duplication! Try again\n");
+					}
+
+
 					scanf("%d",&pick_num);
 					while((pick_num < 1)||(pick_num > 50))
 					{
@@ -170,7 +172,6 @@ int main (void)
 				else if((turn%2)==1)
 				{
 					pick_num=(rand()%50)+1;
-					printf("[COM]Number is %d\n",pick_num);
 					if(com_num[pick_num-1]==-1)
 					{
 						try_num=1;
@@ -178,6 +179,7 @@ int main (void)
 					else
 					{
 						com_num[pick_num-1]=-1;
+						printf("[COM]Number is %d\n",pick_num);
 						try_num=0;
 					}
 				}
