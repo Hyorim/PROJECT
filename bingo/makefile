@@ -1,7 +1,10 @@
 .PHONY: clean
 
+bingo: main.o
+	gcc -o bingo -L../lib main.o -lfuncs
+	
 main.o: main.c
-	gcc -o bingo -I../include -L../lib -lfuncs
+	gcc -c -I../include main.c -o main.o
 
 clean:
-	rm bingo
+	rm main.o bingo
