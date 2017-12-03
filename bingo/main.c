@@ -44,20 +44,9 @@ int main (void)
 
 	printf("Game start.(ctrl+c = Give up)\nMake Bingoboard\n");
 
-	//user_make(user_arr);
-	int a,b;
-	int c=1;
-	for(a=1;a<6;a++)
-	{
-		for(b=1;b<6;b++)
-		{
-			user_arr[a-1][b-1]=c;
-			c++;
-		}
-	}
+	user_make(user_arr);
 	com_make(com_arr);
 
-	//printf("Start Bingo\n Pick a number\n");
 	int pick_num;
 	int user_loc,com_loc;
 	int user_bingo = 0;
@@ -228,7 +217,6 @@ int main (void)
 
 		printf("user bingo is %d\n",user_bingo);
 	}
-
 
 	if (user_bingo > 4)
 	{
