@@ -1,16 +1,11 @@
-DIRS = lib bingo 
+
 .PHONY: all clean 
  
  
 all: 
-	@for dir in $(DIRS);\ 
-	do\ 
-		$(MAKE) -C $$dir;\ 
-	done  
+	$(MAKE) -C lib;
+	$(MAKE) -C bingo;
  
-clean: 
-	@for dir in $(DIRS);\ 
-	do\ 
-		$(MAKE) -C $$dir clean;\ 
-	done 
-
+clean:  
+	$(MAKE) -C lib clean;
+	$(MAKE) -C bingo clean;
